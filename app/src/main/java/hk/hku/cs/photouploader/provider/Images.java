@@ -21,17 +21,10 @@ package hk.hku.cs.photouploader.provider;
  */
 public class Images {
 
-    /**
-     * This are PicasaWeb URLs and could potentially change. Ideally the PicasaWeb API should be
-     * used to fetch the URLs.
-     *
-     * Credit to Romain Guy for the photos:
-     * http://www.curious-creature.org/
-     * https://plus.google.com/109538161516040592207/about
-     * http://www.flickr.com/photos/romainguy
-     */
+
     public final static String[] imageUrls = new String[] {
-    
+
+            //ImageFinder.extractImageUrl("http://i.cs.hku.hk/~xlzhao/")
             "http://i.cs.hku.hk/~xlzhao/images/image.jpg",
             "http://i.cs.hku.hk/~xlzhao/images/JPEG_20151206_234127_-884759479.jpg",
             "http://i.cs.hku.hk/~xlzhao/images/20151211_001718image.jpg",

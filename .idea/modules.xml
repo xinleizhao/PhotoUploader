@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PhotoUploader.iml" filepath="$PROJECT_DIR$/PhotoUploader.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsoup-1.8.3/jsoup-1.8.3.iml" filepath="$PROJECT_DIR$/jsoup-1.8.3/jsoup-1.8.3.iml" />
     </modules>
   </component>
 </project>
