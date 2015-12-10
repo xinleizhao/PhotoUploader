@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PhotoUploader</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_cam">CamActivity</string>
+    <string name="title_activity_browser">BrowserActivity</string>
+    <string name="title_activity_uploader">UploaderActivity</string>
+    <string name="title_activity_gallery">GalleryActivity</string>
+
+    <string name="clear_cache_menu">Clear Caches</string>
+    <string name="clear_cache_complete_toast">Caches have been cleared</string>
+    <string name="imageview_description">Image Thumbnail</string>
+    <string name="no_network_connection_toast">No network connection found</string>
+    <string name="title_activity_image_detail">ImageDetailActivity</string>
+
+
+</resources>
