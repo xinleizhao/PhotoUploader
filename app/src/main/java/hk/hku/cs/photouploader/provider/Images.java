@@ -16,20 +16,78 @@
 
 package hk.hku.cs.photouploader.provider;
 
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Some simple test data to use for this sample app.
  */
-public class Images {
+    public class Images {
+
+    public static List<String> ExtractImage() throws IOException {
+        List<String> ar = new ArrayList<>();
+        Document doc = Jsoup.connect("http://i.cs.hku.hk/~xlzhao/upload.php").get();
+        Elements media = doc.select("[src]");
+
+        for (Element src : media) {
+            if (src.tagName().equals("img"))
+                ar.add(src.attr("abs:src"));
+            //print("<%s>", src.attr("abs:src"), trim(src.attr("alt"), 20));
+
+        }
+        return ar;
+    }
+/*
+    private void print(String msg, Object... args) {
+        System.out.println(String.format(msg, args));
+    }
+
+    private String trim(String s, int width) {
+        if (s.length() > width)
+            return s.substring(0, width - 1) + ".";
+        else
+            return s;
+    }
+*/
+    public static String[] myMethod() {
+        try {
+            List<String> urllist = ExtractImage();
+
+            String[] urlarr = new String[urllist.size()];
+            urlarr = urllist.toArray(urlarr);
+
+            return urlarr;
 
 
-    public final static String[] imageUrls = new String[] {
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-            //ImageFinder.extractImageUrl("http://i.cs.hku.hk/~xlzhao/")
+    public final static String[] imageUrls = myMethod();
+    public final static String[] imageThumbUrls = myMethod();
+}
+
+    /*public final String[] imageUrls =
+            new String[] {
+
+
+
             "http://i.cs.hku.hk/~xlzhao/images/image.jpg",
             "http://i.cs.hku.hk/~xlzhao/images/JPEG_20151206_234127_-884759479.jpg",
             "http://i.cs.hku.hk/~xlzhao/images/20151211_001718image.jpg",
             "http://i.cs.hku.hk/~xlzhao/images/JPEG_20151211_003633_2086875812.jpg",
-            "https://lh6.googleusercontent.com/-55osAWw3x0Q/URquUtcFr5I/AAAAAAAAAbs/rWlj1RUKrYI/s1024/A%252520Photographer.jpg",
+            "http://i.cs.hku.hk/~xlzhao/images/20151211_040139image.jpg",
+            "http://i.cs.hku.hk/~xlzhao/images/20151211_040829image.jpg",
+            /*"https://lh6.googleusercontent.com/-55osAWw3x0Q/URquUtcFr5I/AAAAAAAAAbs/rWlj1RUKrYI/s1024/A%252520Photographer.jpg",
             "https://lh4.googleusercontent.com/--dq8niRp7W4/URquVgmXvgI/AAAAAAAAAbs/-gnuLQfNnBA/s1024/A%252520Song%252520of%252520Ice%252520and%252520Fire.jpg",
             "https://lh5.googleusercontent.com/-7qZeDtRKFKc/URquWZT1gOI/AAAAAAAAAbs/hqWgteyNXsg/s1024/Another%252520Rockaway%252520Sunset.jpg",
             "https://lh3.googleusercontent.com/--L0Km39l5J8/URquXHGcdNI/AAAAAAAAAbs/3ZrSJNrSomQ/s1024/Antelope%252520Butte.jpg",
@@ -128,7 +186,8 @@ public class Images {
             "https://lh4.googleusercontent.com/-PDT167_xRdA/URqvK36mLcI/AAAAAAAAAbs/oi2ik9QseMI/s1024/Windmills.jpg",
             "https://lh5.googleusercontent.com/-kI_QdYx7VlU/URqvLXCB6gI/AAAAAAAAAbs/N31vlZ6u89o/s1024/Yet%252520Another%252520Rockaway%252520Sunset.jpg",
             "https://lh4.googleusercontent.com/-e9NHZ5k5MSs/URqvMIBZjtI/AAAAAAAAAbs/1fV810rDNfQ/s1024/Yosemite%252520Tree.jpg",
-    };
+            */
+
 
     /**
      * This are PicasaWeb thumbnail URLs and could potentially change. Ideally the PicasaWeb API
@@ -139,12 +198,16 @@ public class Images {
      * https://plus.google.com/109538161516040592207/about
      * http://www.flickr.com/photos/romainguy
      */
-    public final static String[] imageThumbUrls = new String[] {
+   /* public final static String[] imageThumbUrls =
+
+        new String[] {
             "http://i.cs.hku.hk/~xlzhao/images/image.jpg",
             "http://i.cs.hku.hk/~xlzhao/images/JPEG_20151206_234127_-884759479.jpg",
             "http://i.cs.hku.hk/~xlzhao/images/20151211_001718image.jpg",
             "http://i.cs.hku.hk/~xlzhao/images/JPEG_20151211_003633_2086875812.jpg",
-            "https://lh6.googleusercontent.com/-55osAWw3x0Q/URquUtcFr5I/AAAAAAAAAbs/rWlj1RUKrYI/s240-c/A%252520Photographer.jpg",
+            "http://i.cs.hku.hk/~xlzhao/images/20151211_040139image.jpg",
+            "http://i.cs.hku.hk/~xlzhao/images/20151211_040829image.jpg",
+            /*"https://lh6.googleusercontent.com/-55osAWw3x0Q/URquUtcFr5I/AAAAAAAAAbs/rWlj1RUKrYI/s240-c/A%252520Photographer.jpg",
             "https://lh4.googleusercontent.com/--dq8niRp7W4/URquVgmXvgI/AAAAAAAAAbs/-gnuLQfNnBA/s240-c/A%252520Song%252520of%252520Ice%252520and%252520Fire.jpg",
             "https://lh5.googleusercontent.com/-7qZeDtRKFKc/URquWZT1gOI/AAAAAAAAAbs/hqWgteyNXsg/s240-c/Another%252520Rockaway%252520Sunset.jpg",
             "https://lh3.googleusercontent.com/--L0Km39l5J8/URquXHGcdNI/AAAAAAAAAbs/3ZrSJNrSomQ/s240-c/Antelope%252520Butte.jpg",
@@ -243,5 +306,6 @@ public class Images {
             "https://lh4.googleusercontent.com/-PDT167_xRdA/URqvK36mLcI/AAAAAAAAAbs/oi2ik9QseMI/s240-c/Windmills.jpg",
             "https://lh5.googleusercontent.com/-kI_QdYx7VlU/URqvLXCB6gI/AAAAAAAAAbs/N31vlZ6u89o/s240-c/Yet%252520Another%252520Rockaway%252520Sunset.jpg",
             "https://lh4.googleusercontent.com/-e9NHZ5k5MSs/URqvMIBZjtI/AAAAAAAAAbs/1fV810rDNfQ/s240-c/Yosemite%252520Tree.jpg",
-    };
-}
+    */
+
+

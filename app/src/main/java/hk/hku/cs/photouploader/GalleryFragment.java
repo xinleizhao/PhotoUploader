@@ -35,8 +35,8 @@ import hk.hku.cs.photouploader.util.Utils;
 
 
 public class GalleryFragment extends Fragment implements AdapterView.OnItemClickListener {
-private static final String TAG = "ImageGridFragment";
-    private static final String IMAGE_CACHE_DIR = "thumbs";
+private final static String TAG = "ImageGridFragment";
+    private final static String IMAGE_CACHE_DIR = "thumbs";
     
     private int mImageThumbSize;
     private int mImageThumbSpacing;
